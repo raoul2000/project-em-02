@@ -30,9 +30,13 @@ function createWindow () {
   });
 }
 
+/**
+ * Load view js into main process
+ */
 function loadViews () {
-  var files = glob.sync(path.join(__dirname, 'view/**/*.main.js'));
+  var files = glob.sync(path.join(__dirname, 'views/**/*.main.js'));
   files.forEach(function (file) {
+    console.log("[main-process] loading "+file);
     require(file);
   });
 }
