@@ -1,4 +1,7 @@
 const electron = require('electron');
+const path = require('path');
+const glob = require('glob');
+
 // Module to control application life.
 const app = electron.app;
 // Module to create native browser window.
@@ -27,10 +30,20 @@ function createWindow () {
   });
 }
 
+function loadViews () {
+  var files = glob.sync(path.join(__dirname, 'view/**/*.js'));
+  files.forEach(function (file) {
+    require(file);
+  });
+}
+
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.
 // Some APIs can only be used after this event occurs.
-app.on('ready', createWindow);
+app.on('ready', function() {
+  createWindow();
+  loadViews();
+});
 
 // Quit when all windows are closed.
 app.on('window-all-closed', function () {

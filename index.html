@@ -5,7 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>title</title>
     <link href="node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
-  </head>
+    <link href="assets/style.css" rel="stylesheet">
+
+    <link rel="import" href="views/page-1.html">
+    <link rel="import" href="views/page-2.html">
+    <link rel="import" href="views/modal-1.html">
   <body  id="app">
     <div class="container">
       <div class="row">
@@ -19,7 +23,19 @@
             and Electron <script>document.write(process.versions.electron)</script>.
           </div>
         </div>
+
+        <div class="col-sm-12">
+          <a href="#" data-section="page-1">page 1</a>
+          <a href="#" data-section="page-2">page 2</a>
+          <a href="#" data-modal="modal-1">modal 1</a>
+        </div>
+
       </div>
+
+      <div id="content">
+
+      </div>
+
     </div>
 
     <!--
@@ -30,7 +46,8 @@
     </script>
     <script src="node_modules/bootstrap/dist/js/bootstrap.min.js" type="text/javascript"></script>
     <script type="text/javascript">
-      require('./renderer.js')
+      require('./assets/nav');
+      require('./assets/imports');
     </script>
   </body>
 </html>
