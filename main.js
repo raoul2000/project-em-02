@@ -31,7 +31,7 @@ function createWindow () {
 }
 
 function loadViews () {
-  var files = glob.sync(path.join(__dirname, 'view/**/*.js'));
+  var files = glob.sync(path.join(__dirname, 'view/**/*.main.js'));
   files.forEach(function (file) {
     require(file);
   });
