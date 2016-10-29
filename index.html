@@ -18,7 +18,47 @@
     <link rel="import" href="views/modal-1.html">
     <link rel="import" href="views/modal-2.html">
   <body  id="app">
+
+    <nav class="navbar navbar-default navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">Project name</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="#">Home</a></li>
+
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Pages <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="#" data-section="page-1">page 1</a></li>
+                <li><a href="#" data-section="page-2">page 2</a></li>
+                <li role="separator" class="divider"></li>
+                <li class="dropdown-header">Modals</li>
+                <li><a href="#" data-modal="modal-1" data-nav="true">modal 1</a></li>
+                <li><a href="#" data-modal="modal-2">modal 2</a></li>
+              </ul>
+            </li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="#" data-section="page-3">Handlebars </a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+
     <div class="container">
+
+      <div id="content">
+      </div>
+
+
       <div class="row">
         <div class="col-sm-12">
           <div class="alert alert-info" role="alert">
@@ -28,16 +68,8 @@
             and Electron <script>document.write(process.versions.electron)</script>.
           </div>
         </div>
-
-        <div class="col-sm-12">
-          [<a href="#" data-section="page-1">page 1</a>]
-          [<a href="#" data-section="page-2">page 2</a>]
-          [<a href="#" data-section="page-3">Handlebars </a>]
-          [<a href="#" data-modal="modal-1">modal 1</a>]
-          [<a href="#" data-modal="modal-2">modal 2</a>]
-        </div>
       </div>
-      <div id="content"/>
+
     </div>
 
     <!--

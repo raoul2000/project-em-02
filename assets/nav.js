@@ -1,5 +1,15 @@
 
 /**
+ * Deselect all navbar items
+ */
+function deselectNavItems() {
+  let buttons = document.querySelectorAll('ul.nav  li.active');
+  Array.prototype.forEach.call(buttons, function (button) {
+    button.classList.remove('active');
+  });
+}
+
+/**
  * Add class *hidden* to the sections that don't already have one
  */
 function hideAllSections () {
@@ -9,21 +19,32 @@ function hideAllSections () {
       section.classList.add('hidden');
     }
   });
+  deselectNavItems();
 }
 
 /**
- * Show the section selected by the user.
+ * Show only the section selected by the user.
  */
 function handleSectionTrigger(event) {
   hideAllSections();
+  // display the selected section
   const sectionId = event.target.dataset.section; // page-1
   document.getElementById(sectionId).classList.remove('hidden');
+  event.target.parentElement.classList.add('active');
 }
 
 /**
- * Show the modal dialog
+ * Show the modal dialog.
+ * If the target element is included in the navbar and should
+ * by set as active, it must have a data-nav attribute.
  */
 function handleModalTrigger(event) {
+  // behave like a navbar item
+  if(event.target.dataset.nav) {
+    deselectNavItems();
+    event.target.parentElement.classList.add('active');
+  }
+  // show the modal
   const modalId = event.target.dataset.modal;
   $('#'+modalId).modal();
 }
