@@ -6,7 +6,14 @@ var vuejsApp = new Vue({
     "text" : {
       "title" : "title",
       "body" : "body here !!"
-    }
+    },
+    "root" : [
+      { 'node' : "blue things", 'children' : []},
+      { 'node' : "green stuff", 'children' : [
+        { 'node' : "salad", 'children' : []},
+        { 'node' : "alien", 'children' : []}
+      ]}
+    ]
   }
 });
 
@@ -15,13 +22,14 @@ function startVuejs(event) {
   console.log("startVuejs ...");
 
   // calling the main process to get data to display
-  ipc.send('get-data');
+  ipc.send('vuejs-get-data');
 
   // when the data is available,
-  ipc.once('get-data-reply',function(event, data){
+  ipc.once('vuejs-get-data-reply',function(event, data){
     console.log("recevied a reply from main");
     console.log(data);
-    vuejsApp.text = data;
+    vuejsApp.text = data.text;
+    vuejsApp.root = data.root;
   });
 }
 

@@ -6,11 +6,23 @@ const electron = require('electron');
 const ipc = electron.ipcMain;
 const app = electron.app;
 
-
-ipc.on('get-data', function (event,arg) {
+ipc.on('vuejs-get-data', function (event,arg) {
   const now = new Date();
-  const data = {
-    "title" : "this is my title",
-    "body" : "time is "+now};
-  event.sender.send('get-data-reply', data );
+  event.sender.send('vuejs-get-data-reply', {
+    "text" : {
+      "title" : "Vues.js is cool",
+      "body" : "yes it is !! time is "+now
+    },
+    "root" : [
+      { 'node' : "blue things", 'children' : [
+        { 'node' : "The sky", 'children' : []},
+        { 'node' : "your eyes", 'children' : []},
+        { 'node' : "the time ("+now+")", 'children' : []}
+      ]},
+      { 'node' : "green stuff", 'children' : [
+        { 'node' : "salad", 'children' : []},
+        { 'node' : "alien", 'children' : []}
+      ]}
+    ]
+  });
 });
