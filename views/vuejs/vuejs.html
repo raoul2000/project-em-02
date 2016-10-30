@@ -1,0 +1,23 @@
+<template class="view">
+  <section id="vuejs" class="hidden">
+
+    <div class="col-xs-12">
+      <button type="button" class="btn btn-primary" data-action="start">
+        start vue.js demo
+      </button>
+    </div>
+
+    <div id="vuejs-app" class="col-xs-12">
+      <div>
+        <h1>{{text.title}}</h1>
+        <div class="body">
+          {{text.body}}
+        </div>
+      </div>
+    </div>
+
+    <script type="text/javascript">
+      require('./views/vuejs/vuejs')
+    </script>
+  </section>
+</template>
