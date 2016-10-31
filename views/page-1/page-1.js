@@ -8,11 +8,25 @@
 
 
 const ipc = require('electron').ipcRenderer;
+PNotify.prototype.options.styling = "bootstrap3";
 
 const page1Container = document.getElementById('page-1');
 
 page1Container.addEventListener('click',function(event){
-  ipc.send('msg-page-1');
+  const action = event.target.dataset.action;
+  console.log("pnotify");
+  if( action === 'pnotify') {
+    new PNotify({
+        title: 'Regular Notice',
+        text: 'Check me out! I\'m a notice.',
+        type: "success",
+        "buttons" : {
+          "closer" : true
+        }
+    });
+  } else {
+    ipc.send('msg-page-1');
+  }
 });
 
 ipc.on('asynchronous-reply',function(event, arg){
