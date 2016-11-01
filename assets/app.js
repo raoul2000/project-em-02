@@ -1,5 +1,4 @@
-
-function documentReay(){
+function ShowNotificationOnStartup(){
   setTimeout(
     function(){
       new PNotify({
@@ -29,4 +28,30 @@ function documentReay(){
   )
 }
 
-document.addEventListener('DOMContentLoaded', documentReay, false);
+
+
+window.myApp = {
+
+  showOverlay : function(text) {
+    const el = document.getElementById('loader-1');
+    if( text ) {
+      el.dataset.text = text;
+    }
+    el.classList.add('is-active');
+  },
+  hideOverlay : function() {
+    const el = document.getElementById('loader-1');
+    el.dataset.text = '';
+    el.classList.remove('is-active');
+  },
+  onDocumentReady : function() {
+    ShowNotificationOnStartup();
+  },
+
+  showNotification : function(options) {
+    
+  }
+};
+
+
+document.addEventListener('DOMContentLoaded', window.myApp.onDocumentReady, false);

@@ -24,6 +24,10 @@ page1Container.addEventListener('click',function(event){
           "closer" : true
         }
     });
+  }
+  if( action === "show-overlay") {
+    myApp.showOverlay("loading for 2 seconds ...");
+    setTimeout(window.myApp.hideOverlay, 2000);
   } else {
     ipc.send('msg-page-1');
   }

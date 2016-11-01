@@ -1,3 +1,16 @@
+# My Electron boilerplate
+
+Based on :
+- [Electron Quickstart](https://github.com/electron/electron-quick-start)
+
+Includes :
+- bootstrap
+- handlebars
+- vue.js
+- PNotify
+- pure-css-loader
+
+
 # electron-quick-start
 
 **Clone and run for a quick way to see an Electron in action.**
