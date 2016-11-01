@@ -29,8 +29,17 @@ function handleSectionTrigger(event) {
   hideAllSections();
   // display the selected section
   const sectionId = event.target.dataset.section; // page-1
-  document.getElementById(sectionId).classList.remove('hidden');
+  const sectionView = document.getElementById(sectionId);
+  
+  sectionView.dispatchEvent(
+    new CustomEvent('before-show')
+  );
+  sectionView.classList.remove('hidden');
+
   event.target.parentElement.classList.add('active');
+  sectionView.dispatchEvent(
+    new CustomEvent('after-show')
+  );
 }
 
 /**

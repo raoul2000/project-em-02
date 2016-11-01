@@ -9,6 +9,7 @@ Includes :
 - [vue.js](https://vuejs.org/)
 - [PNotify](https://github.com/sciactive/pnotify)
 - [pure-css-loader](https://github.com/raphaelfabeni/css-loader)
+- [Electron JSON Storage](https://github.com/jviotti/electron-json-storage)
 
 Run in dev mode :
 
