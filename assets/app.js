@@ -29,7 +29,10 @@ function ShowNotificationOnStartup(){
 }
 
 
+// initialize PNotify theme
+PNotify.prototype.options.styling = "bootstrap3";
 
+// Create the single app instance
 window.myApp = {
 
   showOverlay : function(text) {
@@ -49,7 +52,7 @@ window.myApp = {
   },
 
   showNotification : function(options) {
-    
+    new PNotify(options);
   }
 };
 

@@ -4,11 +4,11 @@ Based on :
 - [Electron Quickstart](https://github.com/electron/electron-quick-start)
 
 Includes :
-- bootstrap
-- handlebars
-- vue.js
-- PNotify
-- pure-css-loader
+- [bootstrap](http://getbootstrap.com)
+- [handlebars](https://github.com/wycats/handlebars.js/)
+- [vue.js](https://vuejs.org/)
+- [PNotify](https://github.com/sciactive/pnotify)
+- [pure-css-loader](https://github.com/raphaelfabeni/css-loader)
 
 
 # electron-quick-start
