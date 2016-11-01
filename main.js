@@ -10,16 +10,31 @@ const BrowserWindow = electron.BrowserWindow;
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
 let mainWindow;
+const debug = /--debug/.test(process.argv[2]);
+console.log(process.argv);
 
 function createWindow () {
+  // prepare main window creation
+  var windowOptions = {
+    width: 800,
+    height : 600,
+    minWidth: 680,
+    title: "My boilerplate"
+  };
+
   // Create the browser window.
-  mainWindow = new BrowserWindow({width: 800, height: 600});
+  mainWindow = new BrowserWindow(windowOptions);
 
   // and load the index.html of the app.
   mainWindow.loadURL(`file://${__dirname}/index.html`);
 
-  // Open the DevTools.
-  mainWindow.webContents.openDevTools();
+  // Launch fullscreen with DevTools open, usage: npm run debug
+  if (debug) {
+    console.log("DEBUG MODE ENABLED");
+    mainWindow.webContents.openDevTools();
+    mainWindow.maximize();
+    require('devtron').install();
+}
 
   // Emitted when the window is closed.
   mainWindow.on('closed', function () {

@@ -1,7 +1,7 @@
 # My Electron boilerplate
 
 Based on :
-- [Electron Quickstart](https://github.com/electron/electron-quick-start)
+- [Electron API Demo](https://github.com/electron/electron-api-demos)
 
 Includes :
 - [bootstrap](http://getbootstrap.com)
@@ -10,6 +10,11 @@ Includes :
 - [PNotify](https://github.com/sciactive/pnotify)
 - [pure-css-loader](https://github.com/raphaelfabeni/css-loader)
 
+Run in dev mode :
+
+```
+npm run dev
+```
 
 # electron-quick-start
 
