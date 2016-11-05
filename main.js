@@ -1,4 +1,5 @@
 const electron = require('electron');
+const ipc = electron.ipcMain;
 const path = require('path');
 const glob = require('glob');
 
@@ -81,5 +82,8 @@ app.on('activate', function () {
   }
 });
 
-// In this file you can include the rest of your app's specific main process
-// code. You can also put them in separate files and require them here.
+ipc.on('load-layout',function(event,arg){
+  const layout = arg.layout;
+  console.log("changing layout to "+layout);
+    mainWindow.loadURL(`file://${__dirname}/${layout}.html`);
+});

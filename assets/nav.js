@@ -1,3 +1,4 @@
+const ipc = require('electron').ipcRenderer;
 
 /**
  * Deselect all navbar items
@@ -22,6 +23,9 @@ function hideAllSections () {
   deselectNavItems();
 }
 
+function handleLayoutTrigger(event) {
+  ipc.send('load-layout', {"layout" : event.target.dataset.layout});
+}
 /**
  * Show only the section selected by the user.
  */
@@ -30,7 +34,7 @@ function handleSectionTrigger(event) {
   // display the selected section
   const sectionId = event.target.dataset.section; // page-1
   const sectionView = document.getElementById(sectionId);
-  
+
   sectionView.dispatchEvent(
     new CustomEvent('before-show')
   );
@@ -68,5 +72,8 @@ document.body.addEventListener('click', function (event) {
   } else if (event.target.dataset.modal) {
     console.log("modal click show");
     handleModalTrigger(event);
+  } else if(event.target.dataset.layout) {
+    console.log("change layout");
+    handleLayoutTrigger(event);
   }
 });

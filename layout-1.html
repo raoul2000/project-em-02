@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>title</title>
+    <link href="node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="node_modules/pnotify/dist/pnotify.css" rel="stylesheet">
+    <link href="node_modules/pnotify/dist/pnotify.buttons.css" rel="stylesheet">
+
+    <link href="node_modules/pure-css-loader/dist/css-loader.css" rel="stylesheet">
+    <link href="assets/style.css" rel="stylesheet">
+
+    <!--
+      Loading views
+      HTML views may load a js script (into the render process)
+    -->
+  <body  id="app">
+    <div id="loader-1" class="loader loader-default" data-text=""></div>
+
+
+    <div class="container">
+
+      <div id="content">
+      </div>
+
+
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="alert alert-info" role="alert">
+            <!-- All of the Node.js APIs are available in this renderer process. -->
+            We are using node <script>document.write(process.versions.node)</script>,
+            Chromium <script>document.write(process.versions.chrome)</script>,
+            and Electron <script>document.write(process.versions.electron)</script>.<br/>
+            <a href="#" data-layout="index">Back Home</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!--
+  -->
+      Javascript
+    <script type="text/javascript">
+      window.$ = window.jQuery = require('./node_modules/jquery/dist/jquery.min.js');
+    </script>
+    <script src="node_modules/bootstrap/dist/js/bootstrap.min.js" type="text/javascript"></script>
+    <script type="text/javascript">
+      require('./assets/nav');
+    </script>
+  </body>
+</html>
