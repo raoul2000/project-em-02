@@ -1,0 +1,21 @@
+<template class="view">
+  <section id="servlet-ref" class="hidden">
+    <div class="row">
+      <div class="col-xs-12">
+        <h2>Servlet Ref</h2>
+        <div id="servlet-ref-view">
+          <table>
+            <tr v-for="servlet in servletRefList">
+              <td>{{servlet.id}}</td>
+              <td>{{servlet.name}}</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <script type="text/javascript">
+      require('./views/servlet-ref/render')
+    </script>
+  </section>
+</template>
