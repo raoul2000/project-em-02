@@ -1,0 +1,82 @@
+{
+    "properties": null,
+    "config": {
+        "filepath": "/mnt/c/dev/ws/lab/tomcat-scan/test/sample-data/home/tomcat-1/conf/server.xml",
+        "DOM": null
+    },
+    "contexts": [{
+        "file": "/mnt/c/dev/ws/lab/tomcat-scan/test/sample-data/home/tomcat-1/conf/server.xml",
+        "list": [{
+            "path": "/www-A",
+            "docBase": "/mnt/c/dev/ws/lab/tomcat-scan/test/sample-data/home/webapp-A",
+            "servlets": [{
+                "name": "Jersey Web Application",
+                "urlPattern": ["/service/*"],
+                "class": "org.glassfish.jersey.servlet.ServletContainer"
+            }, {
+                "name": "Faces Servlet",
+                "urlPattern": ["*.jsf", "*.xhtml"],
+                "class": "javax.faces.webapp.FacesServlet"
+            }, {
+                "name": "om",
+                "urlPattern": ["/om"],
+                "class": "com.company.om.OmServlet"
+            }, {
+                "name": "query",
+                "urlPattern": ["/query/*"],
+                "class": "com.company.om.web.QueryServlet"
+            }, {
+                "name": "ContentServlet",
+                "urlPattern": ["/content/*", "/config/*"],
+                "class": "com.company.om.web.ContentServlet"
+            }, {
+                "name": "ShowLogServlet",
+                "urlPattern": ["/showlog/*"],
+                "class": "com.company.om.web.ShowLogServlet"
+            }, {
+                "name": "TemplateIndex",
+                "urlPattern": ["/web-app-template/*"],
+                "class": ""
+            }]
+        }, {
+            "path": "/www-B",
+            "docBase": "/mnt/c/dev/ws/lab/tomcat-scan/test/sample-data/home/webapp-B",
+            "servlets": [{
+                "name": "Super Cool Web Application",
+                "urlPattern": ["/service/*"],
+                "class": "org.turtle.jersey.servlet.ServletContainer"
+            }]
+        }]
+    }, {
+        "file": "/mnt/c/dev/ws/lab/tomcat-scan/test/sample-data/home/tomcat-1/conf/Catalina/localhost/dummy.xml",
+        "list": [],
+        "error": {}
+    }, {
+        "file": "/mnt/c/dev/ws/lab/tomcat-scan/test/sample-data/home/tomcat-1/conf/Catalina/localhost/webapp-C.xml",
+        "list": [{
+            "path": "/www-C",
+            "docBase": "/mnt/c/dev/ws/lab/tomcat-scan/test/sample-data/home/webapp-C",
+            "servlets": [{
+                "name": "Super Cool Web Application",
+                "urlPattern": ["/service/*"],
+                "class": "org.turtle.jersey.servlet.ServletContainer"
+            }]
+        }]
+    }, {
+        "file": "/mnt/c/dev/ws/lab/tomcat-scan/test/sample-data/home/tomcat-1/conf/Catalina/localhost/webapp-D.xml",
+        "list": [{
+            "path": "/www-D",
+            "docBase": "/mnt/c/dev/ws/lab/tomcat-scan/test/sample-data/home/webapp-D",
+            "error": {
+                "command": "cat /mnt/c/dev/ws/lab/tomcat-scan/test/sample-data/home/webapp-D/WEB-INF/web.xml",
+                "success": false,
+                "error": {
+                    "stderr": "cat: /mnt/c/dev/ws/lab/tomcat-scan/test/sample-data/home/webapp-D/WEB-INF/web.xml: Aucun fichier ou dossier de ce type\n",
+                    "code": 1
+                },
+                "value": null
+            }
+        }]
+    }],
+    "port": "8080"
+}
