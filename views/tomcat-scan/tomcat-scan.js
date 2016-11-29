@@ -7,8 +7,25 @@ const tcVue = new Vue({
   el: '#tc-scan-result',
   data: {
     "scanResult" : null,
-    "servletList" : null
+    "tomcat" : null
+  },
+  methods : {
+    servletUrl : function(servlet)  {
+      return "http://" + this.tomcat.ip + ":" + this.tomcat.port + servlet.path;
+    }
   }
+
+  /*,
+  computed : {
+    servletUrl : function() {
+      return "url";
+    }
+  },
+  methods : {
+    openExternal : function(url) {
+      console.log(url);
+    }
+  }*/
 });
 
 function servletList(scanResult, ip) {
@@ -40,19 +57,18 @@ function showConnectionForm(){
  */
 function startScan(event) {
 
-  var host = document.getElementById('input-host').value;
+  var host     = document.getElementById('input-host').value;
   var username = document.getElementById('input-username').value;
   var password = document.getElementById('input-password').value;
+
   // TODO : validate inputs
-  //
 
   hideConnectionForm();
   myApp.showOverlay("Exploring tomcat installation ...");
-  console.log('host = '+host);
 
   // calling the main process to get data to display
   ipc.send('start-scan', {
-    "host" : host,
+    "host"     : host,
     "username" : username,
     "password" : password
   });
@@ -64,9 +80,11 @@ function startScan(event) {
 
     console.log("recevied a reply from main");
     console.log(data);
-    
+
     tcVue.scanResult = data;
-    tcVue.servletList = servletList(data,host);
+    //tcVue.tomcat = servletList(data,host);
+    data.ip = host;
+    tcVue.tomcat = data;
   });
 }
 

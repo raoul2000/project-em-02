@@ -1,3 +1,5 @@
+const shell = require('electron').shell;
+
 function ShowNotificationOnStartup(){
   setTimeout(
     function(){
@@ -53,6 +55,10 @@ window.myApp = {
 
   showNotification : function(options) {
     new PNotify(options);
+  },
+  openUrlInDefaultBrowser : function (url){
+    console.log("openUrlInDefaultBrowser url = "+url);
+    shell.openExternal(url);
   }
 };
 
