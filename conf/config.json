@@ -1,0 +1,13 @@
+{
+  "mras" : {
+    "url": "http://api.domain.com/rest",
+    "connectionId" : "001",
+    "timeout" : 1500,
+    "rename" : true,
+    "agentOptions": {
+      "rejectUnauthorized": false,
+      "ciphers": "ALL",
+      "secureProtocol": "TLSv1_method"
+    }
+  }
+}

@@ -1,0 +1,13 @@
+body {
+  min-height: 2000px;
+  padding-top: 70px;
+}
+
+template.view > section {
+  display:none;
+}
+
+.story-body {
+  margin-top: 1em;
+  margin-bottom: 1em;
+}

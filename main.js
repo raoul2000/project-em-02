@@ -27,7 +27,9 @@ function createWindow () {
   mainWindow = new BrowserWindow(windowOptions);
 
   // and load the index.html of the app.
-  mainWindow.loadURL(`file://${__dirname}/index.html`);
+  //mainWindow.loadURL(`file://${__dirname}/index.html`);
+  mainWindow.loadURL(`file://${__dirname}/login.html`);
+  //mainWindow.loadURL(`file://${__dirname}/editor.html`);
 
   // Launch fullscreen with DevTools open, usage: npm run debug
   if (debug) {
@@ -50,6 +52,11 @@ function createWindow () {
  * Load view js into main process
  */
 function loadViews () {
+  require(path.join(__dirname, 'views/login/login.main.js') );
+  require(path.join(__dirname, 'views/editor/editor.main.js') );
+  return;
+
+  // temporary disable
   var files = glob.sync(path.join(__dirname, 'views/**/*.main.js'));
   files.forEach(function (file) {
     console.log("[main-process] loading "+file);
@@ -87,3 +94,26 @@ ipc.on('load-layout',function(event,arg){
   console.log("changing layout to "+layout);
     mainWindow.loadURL(`file://${__dirname}/${layout}.html`);
 });
+
+let credential = {
+  "username" : null,
+  "password" : null
+};
+
+ipc.on('req-save-credential', function(event,cred){
+  credential = cred;
+});
+
+ipc.on('req-read-credential', function(event,cred){
+  credential = cred;
+  event.sender.send('resp-read-credential', credential);
+});
+
+
+function saveCredentials(username, password) {
+
+}
+
+function getCredentials() {
+  return "ee";
+}

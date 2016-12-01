@@ -50,7 +50,7 @@ window.myApp = {
     el.classList.remove('is-active');
   },
   onDocumentReady : function() {
-    ShowNotificationOnStartup();
+    //ShowNotificationOnStartup();
   },
 
   showNotification : function(options) {
