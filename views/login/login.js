@@ -1,31 +1,22 @@
-/**
- * Loaded in the render process by the view HTML
- * example :
- * <script type="text/javascript">
- *      require('./views/page-1/page-1')
- * </script>
- */
-
-
 const ipc = require('electron').ipcRenderer;
 
 const btnLoginEl = document.getElementById('btn-login');
-console.log("ok");
+
+/**
+ * User login
+ */
 btnLoginEl.addEventListener('click',function(event){
 
-  var username     = document.getElementById('username').value;
-  var password     = document.getElementById('password').value;
-
-  var credential =  {
+  const credential = {
     "username" : document.getElementById('username').value,
     "password" : document.getElementById('password').value
   };
 
   if( credential.username.length === 0) {
     myApp.showNotification({
-      title: 'Login Error',
+      title: 'Warning',
       text: 'Please enter a username.',
-      type: "error"
+      type: "warning"
     });
     document.getElementById('username').focus(true);
   } else {
@@ -45,7 +36,7 @@ btnLoginEl.addEventListener('click',function(event){
         type: "error"
       });
     });
-    
+
     // start login
     btnLoginEl.disabled = true;
     ipc.send('req-login', credential);
