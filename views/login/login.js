@@ -16,7 +16,12 @@ btnLoginEl.addEventListener('click',function(event){
   var username     = document.getElementById('username').value;
   var password     = document.getElementById('password').value;
 
-  if( username.length === 0) {
+  var credential =  {
+    "username" : document.getElementById('username').value,
+    "password" : document.getElementById('password').value
+  };
+
+  if( credential.username.length === 0) {
     myApp.showNotification({
       title: 'Login Error',
       text: 'Please enter a username.',
@@ -24,12 +29,14 @@ btnLoginEl.addEventListener('click',function(event){
     });
     document.getElementById('username').focus(true);
   } else {
+
     // perform login : first innstall event handlers for login response
-    ipc.on('resp-login-success',function(event,data){
+    ipc.once('resp-login-success',function(event,data){
+      myApp.setParam('credential', credential);
       ipc.send("load-layout",{ "layout" : "editor"});
     });
 
-    ipc.on('resp-login-error',function(event,data){
+    ipc.once('resp-login-error',function(event,data){
       btnLoginEl.disabled = false;
       document.getElementById('username').focus(true);
       myApp.showNotification({
@@ -38,11 +45,9 @@ btnLoginEl.addEventListener('click',function(event){
         type: "error"
       });
     });
+    
     // start login
     btnLoginEl.disabled = true;
-    ipc.send('req-login', {
-      "username" : username,
-      "password" : password
-    });
+    ipc.send('req-login', credential);
   }
 });

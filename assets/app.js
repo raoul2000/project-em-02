@@ -36,6 +36,7 @@ PNotify.prototype.options.styling = "bootstrap3";
 
 // Create the single app instance
 window.myApp = {
+  params : {},
 
   showOverlay : function(text) {
     const el = document.getElementById('loader-1');
@@ -59,6 +60,18 @@ window.myApp = {
   openUrlInDefaultBrowser : function (url){
     console.log("openUrlInDefaultBrowser url = "+url);
     shell.openExternal(url);
+  },
+
+  setParam : function(key, value) {
+    this.params[key] = value;
+  },
+  
+  getParam : function(key, defValue) {
+    if( this.params.hasOwnProperty(key)) {
+      return this.params[key];
+    } else {
+      return defValue;
+    }
   }
 };
 

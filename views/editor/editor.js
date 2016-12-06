@@ -38,6 +38,9 @@ btnSaveStory.addEventListener('click',function(event){
     });
     // start login
     btnSaveStory.disabled = true;
-    ipc.send('req-save-story', story);
+    ipc.send('req-save-story', {
+      "credential" : myApp.getParam('credential'),
+      "story" : story
+    });
   }
 });
